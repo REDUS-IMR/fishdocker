@@ -1,0 +1,3 @@
+# Docker containers for the REDUS-related applications
+
+This repository contains several Dockerfile for automated builds. More to follow...
