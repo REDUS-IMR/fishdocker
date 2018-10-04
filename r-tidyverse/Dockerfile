@@ -14,6 +14,7 @@ ARG FS_VERSION=${FS_VERSION:-1.2.6}
 RUN apk add --no-cache R \
 	R-doc \
 	ttf-liberation \
+	libxml2 \
     && apk add --no-cache --virtual makedep R-dev \
 	linux-headers \
 	curl \
