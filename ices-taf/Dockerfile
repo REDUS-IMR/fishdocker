@@ -1,6 +1,11 @@
 FROM redusimr/r-tidyverse:latest
 
-LABEL org.label-schema.license="LGPL-3.0" \
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.license="LGPL-3.0" \
+      org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/REDUS-IMR/fishdocker" \
       org.label-schema.vendor="REDUS Project at IMR Norway"
 
