@@ -1,0 +1,17 @@
+{
+  "port": 8001,
+  "noAuth": true,
+  "baseURL": "/workspace",
+  "address": "127.0.0.1",
+  "alternativeReCaptcha": false,
+  "reCaptchaKey": "",
+  "reCaptchaSecret": "",
+  "database": "/etc/database.db",
+  "log": "stdout",
+  "plugin": "",
+  "scope": "/root/workspace",
+  "allowCommands": true,
+  "allowEdit": true,
+  "allowNew": true
+}
+
