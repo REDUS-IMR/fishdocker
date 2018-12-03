@@ -21,6 +21,8 @@ RUN apk add --no-cache --virtual builddep\
     libcrypto1.1 \
     libwebsockets \
     nginx \
+    make \
+    screen \
 ## Install file browser
   && curl -fsSL https://filebrowser.github.io/get.sh | bash \
 ## Build newer ttyd (1.4.2)
@@ -44,8 +46,15 @@ RUN apk add --no-cache --virtual builddep\
   && mkdir -p /run/nginx \
 ## Install R packages for REDUS (including TAF, SAM, etc.)
   && Rscript -e 'install.packages(c("icesTAF", "areaplot"))' \
+             -e 'install.packages(c("config", "memisc"))' \
              -e 'install.packages(c("TMB", "ellipse", "RcppEigen"))' \
   && cd /tmp \
+## Install REDUStools
+  && curl -O https://codeload.github.com/REDUS-IMR/REDUStools/tar.gz/master \
+  && tar -zxvf master \
+  && R CMD INSTALL REDUStools-master \
+  && rm -f master \
+## Install SAM
   && curl -O https://codeload.github.com/fishfollower/SAM/tar.gz/master \
   && tar -zxvf master \
   && R CMD INSTALL SAM-master/stockassessment \
