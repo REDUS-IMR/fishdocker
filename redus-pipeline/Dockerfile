@@ -22,6 +22,7 @@ RUN apk add --no-cache --virtual builddep\
     libcrypto1.1 \
     libwebsockets \
     nginx \
+    bash \
     make \
     screen \
 ## Install file browser
