@@ -16,6 +16,7 @@ RUN apk add --no-cache --virtual builddep\
     bash \
     curl \
   && apk add --no-cache \
+    gcompat \
     json-c \
     libssl1.1 \
     libcrypto1.1 \
