@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Build hook running"
+
+REL_LATEST=`git ls-remote --heads https://github.com/Sea2Data/Rstox.git refs/heads/develop | cut -c1-5`
+
+echo "Using Rstox develop with commit $REL_LATEST"
+
+# Built for the above version
+docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+             --build-arg VCS_REF=`git log -n 1 --pretty=format:%h -- .` \
+             --build-arg REL_LATEST=$REL_LATEST \
+             -t $DOCKER_REPO:develop-$REL_LATEST .
+
+# Push it as separate tag
+docker push $DOCKER_REPO:develop-$REL_LATEST
+
+# Copy as the default tag
+docker tag $DOCKER_REPO:develop-$REL_LATEST $IMAGE_NAME
