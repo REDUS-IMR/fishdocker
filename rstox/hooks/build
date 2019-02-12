@@ -1,8 +1,20 @@
 #!/bin/bash
 
-# $IMAGE_NAME var is injected into the build so the tag is correct.
-
 echo "Build hook running"
+
+# Get Rstox release version
+REL_LATEST=`git ls-remote --tags https://github.com/Sea2Data/Rstox.git | sort -t '/' -k 3 -V | awk -F/ '{ print $3 }' | tail -1`
+
+echo "Using Rstox release $REL_LATEST"
+
+# Built for the above version
 docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
              --build-arg VCS_REF=`git log -n 1 --pretty=format:%h -- .` \
-             -t $IMAGE_NAME .
+             --build-arg REL_LATEST=$REL_LATEST \
+             -t $DOCKER_REPO:$REL_LATEST .
+
+# Push it as separate tag
+docker push $DOCKER_REPO:$REL_LATEST
+
+# Copy as the default tag
+docker tag $DOCKER_REPO:$REL_LATEST $IMAGE_NAME
