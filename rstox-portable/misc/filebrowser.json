@@ -9,7 +9,7 @@
   "database": "/etc/database.db",
   "log": "stdout",
   "plugin": "",
-  "scope": "/root/workspace",
+  "root": "/root/workspace",
   "allowCommands": true,
   "allowEdit": true,
   "allowNew": true
