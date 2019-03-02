@@ -1,4 +1,4 @@
-FROM redusimr/rstox:latest
+FROM redusimr/rstox:edge
 
 COPY ./misc/run.sh ./misc/filebrowser.json ./misc/allrevproxy.conf /etc/
 
