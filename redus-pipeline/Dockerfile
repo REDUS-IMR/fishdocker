@@ -50,6 +50,7 @@ RUN apk add --no-cache --virtual builddep\
   && Rscript -e 'install.packages(c("icesTAF", "areaplot"))' \
              -e 'install.packages(c("config", "memisc"))' \
              -e 'install.packages(c("TMB", "ellipse", "RcppEigen"))' \
+             -e 'install.packages(c("desc", "filelock"))' \
   && cd /tmp \
 ## Install REDUStools
   && curl -O https://codeload.github.com/REDUS-IMR/REDUStools/tar.gz/master \
