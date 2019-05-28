@@ -23,9 +23,12 @@ function checkrun {
         fi
 }
 
+# Find logs location
+LOGS=$(find  ~/workspace/projects/ -type d -mindepth 1 -maxdepth 1 -not -path '*/\.*' -exec echo {}"/logs/*" +)
+
 # Declare the arrays
-declare -a arrcmds=("nginx" "filebrowser" "ttyd" "screen")
-declare -a arrpars=("" "-c /etc/filebrowser.json &" "-r 3600 -p 8002 screen -r primary &" "-dmS primary")
+declare -a arrcmds=("nginx" "filebrowser" "ttyd" "screen" "frontail")
+declare -a arrpars=("" "-c /etc/filebrowser.json &" "-r 3600 -p 8002 screen -r primary &" "-dmS primary" "--disable-usage-stats --url-path /logs -p 8003 ${LOGS} ~/workspace/projects/*.Rerr ~/workspace/projects/*.Rout &")
 
 # Loop and run the commands
 
