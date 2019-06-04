@@ -60,9 +60,9 @@ RUN apk add --no-cache --virtual builddep\
   && tar -zxvf master \
   && R CMD INSTALL REDUStools-master \
 ## Install SAM
-  && curl -O https://codeload.github.com/fishfollower/SAM/tar.gz/multi \
-  && tar -zxvf multi \
-  && R CMD INSTALL SAM-multi/stockassessment \
+#  && curl -O https://codeload.github.com/fishfollower/SAM/tar.gz/multi \
+#  && tar -zxvf multi \
+#  && R CMD INSTALL SAM-multi/stockassessment \
 ## Cleaning up
   && apk del --no-cache builddep \
   && rm -rf /tmp/*
