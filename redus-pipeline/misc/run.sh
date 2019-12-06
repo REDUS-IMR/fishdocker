@@ -37,7 +37,7 @@ sed -i "s/%PROXY_PATH%/${PROXY_PATH//\//\\\/}/g" /etc/nginx/conf.d/allrevproxy.c
 
 # Declare the arrays
 declare -a arrcmds=("nginx" "filebrowser" "ttyd" "screen" "frontail")
-declare -a arrpars=("" "-b ${PROXY_PATH}/workspace -c /etc/filebrowser.json &" "-r 3600 -p 8002 screen -r primary &" "-dmS primary" "--disable-usage-stats --url-path ${PROXY_PATH}/logs -p 8003 ${LOGS} ~/workspace/projects/*.Rerr ~/workspace/projects/*.Rout &")
+declare -a arrpars=("" "-b ${PROXY_PATH}/workspace -c /etc/filebrowser.json &" "-p 8002 screen -r primary &" "-dmS primary" "--disable-usage-stats --url-path ${PROXY_PATH}/logs -p 8003 ${LOGS} ~/workspace/projects/*.Rerr ~/workspace/projects/*.Rout &")
 
 # Loop and run the commands
 
