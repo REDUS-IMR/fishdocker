@@ -36,8 +36,8 @@ RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositor
     && tar -zxvf ${REL_LATEST} \
     && Rscript -e "lapply(c(\"data.table\", \"ggplot2\", \"pbapply\", \"rgdal\", \"rgeos\", \"rJava\", \"sp\", \"XML\", \"gridExtra\", \"plotrix\", \"scatterpie\"), install.packages)" \
     && R CMD INSTALL Rstox-* \
-    && curl -LO https://github.com/iambaim/new-reca/releases/download/Reca-v1.2/Reca_1.2_R_x86_64-pc-linux-gnu.tar.gz \
-    && tar -zxvf Reca_1.2_R_x86_64-pc-linux-gnu.tar.gz \
+    && curl -LO https://github.com/iambaim/new-reca/releases/download/Reca-v1.3/Reca_1.3_R_x86_64-pc-linux-gnu.tar.gz \
+    && tar -zxvf Reca_1.3_R_x86_64-pc-linux-gnu.tar.gz \
     && R CMD INSTALL Reca \
     && apk del --no-cache builddep \
     && rm -rf /tmp/*
