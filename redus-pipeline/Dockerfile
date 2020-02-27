@@ -15,6 +15,7 @@ RUN apk add --no-cache --virtual builddep\
     build-base \
     bash \
     curl \
+    libuv-dev \
   && apk add --no-cache \
     gcompat \
     json-c \
@@ -25,13 +26,14 @@ RUN apk add --no-cache --virtual builddep\
     bash \
     make \
     screen \
+    libuv \
 ## Install file browser
   && curl -fsSL https://filebrowser.xyz/get.sh | bash \
-## Build newer ttyd (1.5.2)
+## Build newer ttyd (1.6.0)
   && cd /tmp \
-  && wget https://github.com/tsl0922/ttyd/archive/1.5.2.tar.gz \
-  && tar -zxvf 1.5.2.tar.gz \
-  && cd ttyd-1.5.2 \
+  && wget https://github.com/tsl0922/ttyd/archive/1.6.0.tar.gz \
+  && tar -zxvf 1.6.0.tar.gz \
+  && cd ttyd-1.6.0 \
   && mkdir -p build \
   && cd build \
   && cmake .. \
@@ -41,8 +43,8 @@ RUN apk add --no-cache --virtual builddep\
   && make \
   && make install \
   && cd / \
-## Install frontail (v.4.8.0)
-  && wget https://github.com/mthenw/frontail/releases/download/v4.8.0/frontail-alpine -O /usr/local/bin/frontail \
+## Install frontail (v.4.9.0)
+  && wget https://github.com/mthenw/frontail/releases/download/v4.9.0/frontail-alpine -O /usr/local/bin/frontail \
   && chmod +x /usr/local/bin/frontail \
 ## Required permission and directories
   && chmod +x /etc/run.sh \
