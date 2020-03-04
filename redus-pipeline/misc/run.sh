@@ -13,17 +13,20 @@ function start {
 
 # Function to check and re-run if necessary
 function checkrun {
-        ps aux | grep "$1" | grep -q -v grep
-	s1=$?
-	ps aux | grep "$2" | grep -q -v grep
-	s2=$?
-        if [ $s1 -ne 0 -a $s2 -ne 0 ]; then
+        s1=`ps aux | grep -- "$1" | grep -v -E  "grep|\[*\]" | wc -l`
+        if [ $s1 -eq 0 ]; then
                 echo "$1 has already exited, re-run."
                 start "$1" "$2"
         fi
 }
 
-# Find logs location
+# Init log files
+for d in  ~/workspace/projects/*/ ; do
+	mkdir -p $d/logs
+	touch $d/logs/redus.log
+	touch $d/logs/assessment.log
+done
+
 LOGS=$(find  ~/workspace/projects/ -type d -mindepth 1 -maxdepth 1 -not -path '*/\.*' -exec echo {}"/logs/*" +)
 
 # Get proxy path
