@@ -24,11 +24,15 @@ RUN apk add --no-cache --virtual builddep\
   && mkdir -p /root/workspace \
   && mkdir -p /run/nginx \
 ## Install R packages for REDUS (including TAF, SAM, etc.)
-  && Rscript -e 'install.packages(c("icesTAF", "areaplot"))' \
+  && Rscript -e 'install.packages(c("lattice", "bibtex", "areaplot"))' \
              -e 'install.packages(c("config", "memisc", "knitr", "httr"))' \
              -e 'install.packages(c("TMB", "ellipse", "RcppEigen"))' \
              -e 'install.packages(c("desc", "filelock"))' \
   && cd /tmp \
+## Install icesTAF
+  && curl -O https://codeload.github.com/ices-tools-prod/icesTAF/tar.gz/3.5-0 \
+  && tar -zxvf 3.5-0 \
+  && R CMD INSTALL icesTAF-3.5-0 \
 ## Install REDUStools
   && curl -O https://codeload.github.com/REDUS-IMR/REDUStools/tar.gz/master \
   && tar -zxvf master \
